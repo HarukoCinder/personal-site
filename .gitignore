@@ -1,0 +1,7 @@
+includes/config.php
+uploads/gallery/*
+uploads/thumbnails/*
+!uploads/gallery/.gitkeep
+!uploads/thumbnails/.gitkeep
+*.log
+.DS_Store
