@@ -100,9 +100,13 @@ $icons = [
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>掲示板 - <?= h(SITE_TITLE) ?></title>
+<?php
+$page_title = '掲示板 - ' . SITE_TITLE;
+$page_description = OWNER_NAME . 'の掲示板・ゲストブック';
+$page_lang = 'ja';
+$page_path = '/guestbook';
+require __DIR__ . '/includes/head.php';
+?>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/guestbook.css">
 </head>

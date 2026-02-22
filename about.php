@@ -15,11 +15,16 @@ $visitor_count = (int)($stmt->fetch()['total_count'] ?? 0);
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自己紹介 - <?= h(SITE_TITLE) ?></title>
+<?php
+$page_title = '自己紹介 - ' . SITE_TITLE;
+$page_description = OWNER_NAME . 'の自己紹介ページ';
+$page_lang = 'ja';
+$page_path = '/about';
+require __DIR__ . '/includes/head.php';
+?>
     <link rel="stylesheet" href="css/style.css">
     <style>
+    
         .profile-section { margin-bottom: 30px; }
         .profile-card {
             display: flex;
