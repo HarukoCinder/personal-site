@@ -1,0 +1,4 @@
+Contact: mailto:ryug@vt.edu
+Expires: 2027-06-01T00:00:00.000Z
+Preferred-Languages: en, ja
+Canonical: https://gray.vt.domains/.well-known/security.txt

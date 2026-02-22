@@ -1,0 +1,25 @@
+# === FORCE HTTPS ===
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# === SECURITY HEADERS ===
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+# === PREVENT DIRECTORY LISTING ===
+Options -Indexes
+
+# === BLOCK SENSITIVE FILES ===
+<FilesMatch "\.(sql|md|gitignore|env)$">
+    Require all denied
+</FilesMatch>
+
+# === BLOCK DOTFILES (but allow .well-known/) ===
+RewriteRule ^\.(?!well-known/) - [F]
+
+# === BLOCK DIRECT ACCESS TO INCLUDES ===
+RewriteRule ^includes/ - [F]
+RewriteRule ^database/ - [F]

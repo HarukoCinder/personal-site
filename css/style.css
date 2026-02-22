@@ -828,3 +828,15 @@ img {
         display: block;
     }
 }
+
+/* ======= SIZE ADUJSTMENT =======*/
+@media (min-width: 769px) {
+    html {
+        /* Works in Chrome, Edge, Safari */
+        zoom: 110%;
+
+        /* Firefox Support */
+        -moz-transform: scale(1.1);
+        -moz-transform-origin: top center;
+    }
+}
