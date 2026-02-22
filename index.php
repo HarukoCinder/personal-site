@@ -30,12 +30,14 @@ $status = $settings['current_status'] ?? '通常営業';
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?= h(OWNER_NAME) ?>の個人サイト - 写真ギャラリーとポートフォリオ">
-    <title><?= h($site_title) ?></title>
+<?php
+$page_title = $site_title;
+$page_description = h(OWNER_NAME) . 'の個人サイト - 写真ギャラリーとポートフォリオ';
+$page_lang = 'ja';
+$page_path = '/';
+require __DIR__ . '/includes/head.php';
+?>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="images/favicon.gif" type="image/gif">
 </head>
 <body>
     <!-- ★ キリ番おめでとう！ Kiriban Celebration ★ -->
