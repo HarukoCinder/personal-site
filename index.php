@@ -111,7 +111,7 @@ require __DIR__ . '/includes/head.php';
                     </p>
                     <p class="intro-detail">
                         Previously shadowed at <strong>Cisco ARC</strong> in Tokyo, observing cloud security
-                        auditing processes and iSMAP compliance. Currently serving as President of
+                        auditing processes and iSMAP compliance. I used to be President of
                         the <strong>Nikkei Student Union</strong> at Virginia Tech.
                     </p>
                 </div>
