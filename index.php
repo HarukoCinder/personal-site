@@ -1,322 +1,284 @@
 <?php
 /**
  * ========================================
- * メインページ / Main Page
+ * ポートフォリオ / Portfolio Homepage
  * ========================================
+ * Retro 同人サイト aesthetic × VT Branded
  */
 require_once __DIR__ . '/includes/config.php';
 
-// Get and increment visitor counter
+// Get visitor counter
 $visitor_count = getAndIncrementCounter();
-$is_kiriban = checkKiriban($visitor_count);
-$upcoming_kiriban = getUnclaimedKiriban();
-
-// Get site settings from database (or use defaults)
-try {
-    $db = getDB();
-    $stmt = $db->query("SELECT setting_key, setting_value FROM site_settings");
-    $settings = [];
-    while ($row = $stmt->fetch()) {
-        $settings[$row['setting_key']] = $row['setting_value'];
-    }
-} catch (Exception $e) {
-    $settings = [];
-}
-
-$site_title = $settings['site_title'] ?? SITE_TITLE;
-$last_update = $settings['last_update'] ?? date('Y.m.d');
-$status = $settings['current_status'] ?? '通常営業';
 ?>
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <?php
-$page_title = $site_title;
-$page_description = h(OWNER_NAME) . 'の個人サイト - 写真ギャラリーとポートフォリオ';
-$page_lang = 'ja';
+$page_title = 'Ryu Gray — CS @ Virginia Tech';
+$page_description = 'Computer Science student at Virginia Tech graduating Spring 2026. Cybersecurity, AI/ML, and web development. Bilingual Japanese/English.';
+$page_lang = 'en';
 $page_path = '/';
 require __DIR__ . '/includes/head.php';
 ?>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/portfolio.css">
 </head>
 <body>
-    <!-- ★ キリ番おめでとう！ Kiriban Celebration ★ -->
-    <?php if ($is_kiriban): ?>
-    <div id="kiriban-modal" class="modal-overlay">
-        <div class="modal-content kiriban-celebration">
-            <div class="sparkle">★☆★</div>
-            <h2>🎊 キリ番おめでとう！ 🎊</h2>
-            <p class="kiriban-number"><?= number_format($visitor_count) ?></p>
-            <p>あなたは <?= number_format($visitor_count) ?> 番目の訪問者です！</p>
-            <form action="kiriban_claim.php" method="POST" class="kiriban-form">
-                <input type="hidden" name="milestone" value="<?= $visitor_count ?>">
-                <div class="form-group">
-                    <label>お名前 (任意)</label>
-                    <input type="text" name="name" maxlength="100" placeholder="ななしさん">
+
+<!-- Skip link (accessibility) -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="site-container">
+
+    <!-- Header -->
+    <header class="site-header" role="banner">
+        <span class="header-deco top-left">✧</span>
+        <span class="header-deco top-right">✧</span>
+        <h1 class="site-title">
+            <span class="title-deco">★</span>
+            Ryu Gray
+            <span class="title-deco">★</span>
+        </h1>
+        <p class="site-subtitle">Computer Science · Virginia Tech · ポートフォリオ</p>
+        <p class="header-info">
+            B.S. Spring 2026
+            <span class="info-divider">|</span>
+            M.Eng. Fall 2026 – Fall 2027
+            <span class="info-divider">|</span>
+            Bilingual: EN / JP
+        </p>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+
+        <!-- Left Sidebar -->
+        <aside class="sidebar sidebar-left">
+            <nav class="nav-menu" role="navigation" aria-label="Main navigation">
+                <div class="menu-title">- MENU -</div>
+                <ul>
+                    <li class="current"><a href="/"><span class="nav-icon">◈</span> Portfolio</a></li>
+                    <li><a href="about.php"><span class="nav-icon">◈</span> About Me</a></li>
+                    <li><a href="hobby/"><span class="nav-icon">◈</span> Hobby Site</a></li>
+                    <li><a href="hobby/gallery.php"><span class="nav-icon">◈</span> Gallery</a></li>
+                    <li><a href="hobby/guestbook.php"><span class="nav-icon">◈</span> Guestbook</a></li>
+                </ul>
+            </nav>
+
+            <div class="counter-box">
+                <div class="counter-title">☆ VISITORS ☆</div>
+                <div class="counter-display">
+                    <?php
+                    $count_str = str_pad($visitor_count, 7, '0', STR_PAD_LEFT);
+                    for ($i = 0; $i < strlen($count_str); $i++):
+                    ?>
+                    <span class="counter-digit"><?= $count_str[$i] ?></span>
+                    <?php endfor; ?>
                 </div>
-                <div class="form-group">
-                    <label>一言メッセージ (任意)</label>
-                    <textarea name="message" maxlength="500" placeholder="キリ番ゲット！"></textarea>
+                <div class="counter-label">since 2025</div>
+            </div>
+
+            <!-- Contact quick links -->
+            <div class="mini-links">
+                <div class="links-title">- CONTACT -</div>
+                <ul>
+                    <li><a href="mailto:ryug@vt.edu">ryug@vt.edu</a></li>
+                    <li><a href="https://github.com/HarukoCinder" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/ryugray" target="_blank" rel="noopener">LinkedIn</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="main-content" class="main-content" role="main">
+
+            <!-- Intro -->
+            <section class="content-section" aria-label="Introduction">
+                <h2 class="section-title">
+                    <span class="title-line"></span>
+                    Welcome
+                    <span class="title-line"></span>
+                </h2>
+                <div class="intro-box">
+                    <p>
+                        <span class="intro-name">Ryu Gray</span>
+                        <span class="badge">OPEN TO OPPORTUNITIES</span>
+                    </p>
+                    <p class="intro-detail">
+                        Senior Computer Science student at Virginia Tech, graduating Spring 2026.<br>
+                        Continuing into the M.Eng. Computer Science program (Fall 2026 – Fall 2027).<br>
+                        Focused on <strong>cybersecurity</strong>, <strong>AI/ML</strong>, and <strong>web development</strong>.<br>
+                        Bilingual professional — fluent in English and Japanese (日本語).
+                    </p>
+                    <p class="intro-detail">
+                        Previously shadowed at <strong>Cisco ARC</strong> in Tokyo, observing cloud security
+                        auditing processes and iSMAP compliance. Currently serving as President of
+                        the <strong>Nikkei Student Union</strong> at Virginia Tech.
+                    </p>
                 </div>
-                <button type="submit" class="btn-retro">登録する</button>
-                <button type="button" class="btn-retro btn-secondary" onclick="closeKiriban()">閉じる</button>
-            </form>
-        </div>
-    </div>
-    <?php endif; ?>
+            </section>
 
-    <!-- ========== MAIN CONTAINER ========== -->
-    <div class="site-container">
-        
-        <!-- ★ HEADER ★ -->
-        <header class="site-header">
-            <div class="header-deco top-left">◆</div>
-            <div class="header-deco top-right">◆</div>
-            
-            <h1 class="site-title">
-                <span class="title-deco">✧</span>
-                <?= h($site_title) ?>
-                <span class="title-deco">✧</span>
-            </h1>
-            <p class="site-subtitle"><?= h(SITE_SUBTITLE) ?></p>
-            
-            <div class="header-info">
-                <span class="info-item">管理人: <?= h(OWNER_NAME) ?></span>
-                <span class="info-divider">｜</span>
-                <span class="info-item">Since <?= h(ESTABLISHED_YEAR) ?></span>
-                <span class="info-divider">｜</span>
-                <span class="info-item status-<?= strpos($status, '休') !== false ? '休止' : 'active' ?>">
-                    <?= h($status) ?>
-                </span>
-            </div>
-        </header>
+            <!-- Projects -->
+            <section class="content-section" aria-label="Featured projects">
+                <h2 class="section-title">
+                    <span class="title-line"></span>
+                    Projects / 作品
+                    <span class="title-line"></span>
+                </h2>
 
-        <!-- ★ MARQUEE / お知らせ ★ -->
-        <div class="marquee-container">
-            <div class="marquee-content">
-                <span>★ ようこそ！このサイトは工事中です ★</span>
-                <span>最終更新: <?= h($last_update) ?></span>
-                <span>★ 写真ギャラリー更新しました ★</span>
-                <span>次のキリ番: <?= !empty($upcoming_kiriban) ? number_format($upcoming_kiriban[0]) : '???' ?></span>
-            </div>
-        </div>
-
-        <!-- ========== MAIN LAYOUT ========== -->
-        <div class="main-layout">
-            
-            <!-- ★ LEFT SIDEBAR ★ -->
-            <aside class="sidebar sidebar-left">
-                <nav class="nav-menu">
-                    <div class="menu-title">- MENU -</div>
-                    <ul>
-                        <li><a href="index.php"><span class="nav-icon">◈</span> トップ / TOP</a></li>
-                        <li><a href="about.php"><span class="nav-icon">◈</span> 自己紹介 / ABOUT</a></li>
-                        <li><a href="gallery.php"><span class="nav-icon">◈</span> ギャラリー / GALLERY</a></li>
-                        <li><a href="portfolio.php"><span class="nav-icon">◈</span> 作品集 / WORKS</a></li>
-                        <li><a href="guestbook.php"><span class="nav-icon">◈</span> 掲示板 / BBS</a></li>
-                        <li><a href="links.php"><span class="nav-icon">◈</span> リンク / LINKS</a></li>
+                <article class="project-card">
+                    <h3>Personal Web & Video Server</h3>
+                    <p>Engineered a multi-client HTTP 1.1 server supporting persistent connections
+                       over TCP with IPv4/IPv6 compatibility. Built a stateless authentication API
+                       using JSON Web Tokens (JWT) signed with HMAC to secure private file access.
+                       Optimized performance to meet scalability benchmarks for high client loads.</p>
+                    <ul class="tech-tags" aria-label="Technologies used">
+                        <li>C</li>
+                        <li>TCP/IP</li>
+                        <li>HTTP 1.1</li>
+                        <li>JWT/HMAC</li>
+                        <li>IPv4/IPv6</li>
                     </ul>
-                </nav>
+                </article>
 
-                <!-- カウンター -->
-                <div class="counter-box">
-                    <div class="counter-title">☆ COUNTER ☆</div>
-                    <div class="counter-display">
-                        <?php
-                        $count_str = str_pad($visitor_count, 7, '0', STR_PAD_LEFT);
-                        for ($i = 0; $i < strlen($count_str); $i++):
-                        ?>
-                        <span class="counter-digit"><?= $count_str[$i] ?></span>
-                        <?php endfor; ?>
-                    </div>
-                    <div class="counter-label">あなたは <?= number_format($visitor_count) ?> 人目の訪問者です</div>
-                </div>
-
-                <!-- 次のキリ番 -->
-                <?php if (!empty($upcoming_kiriban)): ?>
-                <div class="kiriban-box">
-                    <div class="kiriban-title">★ 次のキリ番 ★</div>
-                    <div class="kiriban-target"><?= number_format($upcoming_kiriban[0]) ?></div>
-                    <div class="kiriban-remaining">
-                        あと <?= number_format($upcoming_kiriban[0] - $visitor_count) ?> 人！
-                    </div>
-                </div>
-                <?php endif; ?>
-            </aside>
-
-            <!-- ★ MAIN CONTENT ★ -->
-            <main class="main-content">
-                
-                <!-- Welcome Message -->
-                <section class="content-section welcome-section">
-                    <h2 class="section-title">
-                        <span class="title-line"></span>
-                        Welcome!
-                        <span class="title-line"></span>
-                    </h2>
-                    <div class="welcome-box">
-                        <div class="welcome-icon">📷</div>
-                        <div class="welcome-text">
-                            <p>いらっしゃいませ！</p>
-                            <p>このサイトは<?= h(OWNER_NAME) ?>の個人サイトです。<br>
-                            趣味で撮った写真やプログラミング関連の作品を置いています。</p>
-                            <p>ゆっくりしていってね！</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 最新情報 / Updates -->
-                <section class="content-section updates-section">
-                    <h2 class="section-title">
-                        <span class="title-line"></span>
-                        更新履歴
-                        <span class="title-line"></span>
-                    </h2>
-                    <div class="updates-list">
-                        <dl>
-                            <dt>2026.01.22</dt>
-                            <dd>サイト開設！</dd>
-                            <dt>2026.01.22</dt>
-                            <dd>ギャラリーページ作成中...</dd>
-                            <dt>----.--.--</dt>
-                            <dd>Coming soon...</dd>
-                        </dl>
-                    </div>
-                </section>
-
-                <!-- ギャラリー Preview -->
-                <section class="content-section gallery-preview">
-                    <h2 class="section-title">
-                        <span class="title-line"></span>
-                        New Photos
-                        <span class="title-line"></span>
-                    </h2>
-                    <div class="gallery-grid-small">
-                        <?php
-                        // Fetch latest 4 gallery images
-                        try {
-                            $stmt = $db->query("SELECT * FROM gallery WHERE is_visible = 1 ORDER BY uploaded_at DESC LIMIT 4");
-                            $recent_photos = $stmt->fetchAll();
-                        } catch (Exception $e) {
-                            $recent_photos = [];
-                        }
-                        
-                        if (!empty($recent_photos)):
-                            foreach ($recent_photos as $photo):
-                        ?>
-                        <a href="gallery.php?id=<?= $photo['id'] ?>" class="gallery-thumb">
-                            <img src="uploads/thumbnails/<?= h($photo['filename']) ?>" 
-                                 alt="<?= h($photo['title'] ?? 'Photo') ?>">
-                        </a>
-                        <?php 
-                            endforeach;
-                        else:
-                        ?>
-                        <div class="no-photos">
-                            <p>写真を準備中...</p>
-                            <p class="small">Coming soon!</p>
-                        </div>
-                        <?php endif; ?>
-                    </div>
-                    <div class="section-more">
-                        <a href="gallery.php" class="btn-retro">もっと見る →</a>
-                    </div>
-                </section>
-
-            </main>
-
-            <!-- ★ RIGHT SIDEBAR ★ -->
-            <aside class="sidebar sidebar-right">
-                
-                <!-- Profile Mini -->
-                <div class="profile-mini">
-                    <div class="profile-title">- PROFILE -</div>
-                    <div class="profile-icon">
-                        <img src="images/avatar.webp" alt="Avatar" onerror="this.src='images/default_avatar.png'">
-                    </div>
-                    <div class="profile-name"><?= h(OWNER_NAME) ?></div>
-                    <div class="profile-bio">
-                        VT '26 / CS / 📷
-                    </div>
-                    <a href="about.php" class="profile-link">詳細 →</a>
-                </div>
-
-                <!-- お気に入りリンク -->
-                <div class="mini-links">
-                    <div class="links-title">- LINKS -</div>
-                    <ul>
-                        <li><a href="#">友達のサイト</a></li>
-                        <li><a href="#">素材屋さん</a></li>
-                        <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+                <article class="project-card">
+                    <h3>Retro Japanese Personal Site ← You're here!</h3>
+                    <p>Full-stack web application inspired by 2000s 同人サイト (doujin site) culture.
+                       Features a visitor counter with kiriban milestone system, guestbook/BBS,
+                       photo gallery with category filtering, and an admin panel — all built from
+                       scratch with PHP and MySQL on shared hosting. Includes security headers,
+                       robots.txt, security.txt, Open Graph meta tags, and JSON-LD structured data.</p>
+                    <ul class="tech-tags" aria-label="Technologies used">
+                        <li>PHP</li>
+                        <li>MySQL</li>
+                        <li>Apache</li>
+                        <li>HTML/CSS</li>
+                        <li>REST API</li>
                     </ul>
+                </article>
+
+                <article class="project-card">
+                    <h3>iOS Photo Gallery App</h3>
+                    <p>Native iOS application built with SwiftUI featuring photo browsing,
+                       categorization, and a clean modern interface. Implemented using
+                       Apple's latest frameworks and design patterns including MVVM architecture.</p>
+                    <ul class="tech-tags" aria-label="Technologies used">
+                        <li>Swift</li>
+                        <li>SwiftUI</li>
+                        <li>iOS</li>
+                        <li>MVVM</li>
+                        <li>Xcode</li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- Skills -->
+            <section class="content-section" aria-label="Technical skills">
+                <h2 class="section-title">
+                    <span class="title-line"></span>
+                    Skills / スキル
+                    <span class="title-line"></span>
+                </h2>
+                <table class="skills-table">
+                    <tr>
+                        <th>Languages</th>
+                        <td>C, Python, Java, JavaScript, Go, Swift, PHP, HTML/CSS</td>
+                    </tr>
+                    <tr>
+                        <th>Systems</th>
+                        <td>RISC-V, TCP/IP, HTTP, Linux, Apache, MySQL</td>
+                    </tr>
+                    <tr>
+                        <th>Tools</th>
+                        <td>Git, Xcode, VS Code, cPanel, SSH, Vim</td>
+                    </tr>
+                    <tr>
+                        <th>Interests</th>
+                        <td>Cybersecurity, AI/ML, Cloud Security, Reverse Engineering</td>
+                    </tr>
+                    <tr>
+                        <th>Languages</th>
+                        <td>English (fluent), Japanese (fluent / 日本語ネイティブ)</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Education -->
+            <section class="content-section" aria-label="Education">
+                <h2 class="section-title">
+                    <span class="title-line"></span>
+                    Education / 学歴
+                    <span class="title-line"></span>
+                </h2>
+                <div class="intro-box">
+                    <p><strong>B.S. Computer Science</strong> — Virginia Tech (Expected May 2026)</p>
+                    <p class="intro-detail">Virginia Tech Scholarship recipient. Coursework: Data Structures &amp; Algorithms,
+                       Computer Networks, Operating Systems, Reverse Engineering, Machine Learning.</p>
+                    <p><strong>M.Eng. Computer Science</strong> — Virginia Tech (Fall 2026 – Fall 2027)</p>
+                    <p class="intro-detail">Accelerated UG/G program.</p>
+                    <p><strong>A.S. Computer Science, Magna Cum Laude</strong> — NOVA (Dec 2024) — GPA: 3.66</p>
                 </div>
+            </section>
 
-                <!-- 拍手ボタン風 -->
-                <div class="clap-button">
-                    <button onclick="sendClap()" class="btn-clap" title="応援する！">
-                        <span class="clap-icon">👏</span>
-                        <span class="clap-text">拍手</span>
-                    </button>
-                    <div class="clap-count">今日: <span id="clap-today">0</span></div>
+            <!-- Resume -->
+            <section class="content-section" style="text-align: center;" aria-label="Resume download">
+                <a href="files/resume.pdf" class="btn-retro btn-vt" target="_blank">📄 Download Resume (PDF)</a>
+            </section>
+
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar sidebar-right">
+            <div class="profile-mini">
+                <div class="profile-title">- PROFILE -</div>
+                <div class="profile-icon">
+                    <img src="images/avatar.gif" alt="Ryu Gray"
+                         onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23861F41%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 font-size=%2240%22 fill=%22white%22>R</text></svg>'">
                 </div>
-
-                <!-- バナー -->
-                <div class="site-banner">
-                    <div class="banner-title">- BANNER -</div>
-                    <img src="images/banner.gif" alt="Site Banner" class="banner-img" 
-                         onerror="this.style.display='none'">
-                    <div class="banner-info">
-                        <small>リンクフリーです<br>200×40px</small>
-                    </div>
-                </div>
-
-            </aside>
-        </div>
-
-        <!-- ★ FOOTER ★ -->
-        <footer class="site-footer">
-            <div class="footer-deco">✦ ═══════════════════════════════════════ ✦</div>
-            <div class="footer-content">
-                <p>&copy; <?= date('Y') ?> <?= h(OWNER_NAME) ?> All Rights Reserved.</p>
-                <p class="footer-info">
-                    Since <?= h(ESTABLISHED_YEAR) ?> ｜ 
-                    Last Update: <?= h($last_update) ?>
-                </p>
-                <p class="footer-buttons">
-                    <a href="#top" class="btn-small">▲ TOP</a>
-                </p>
+                <div class="profile-name">Ryu Gray</div>
+                <div class="profile-bio">CS @ Virginia Tech<br>Class of 2026</div>
             </div>
-            <div class="footer-deco">✦ ═══════════════════════════════════════ ✦</div>
-        </footer>
+
+            <div class="mini-links">
+                <div class="links-title">- LINKS -</div>
+                <ul>
+                    <li><a href="https://github.com/HarukoCinder" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/ryugray" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="mailto:ryug@vt.edu">Email</a></li>
+                    <li><a href="files/resume.pdf" target="_blank">Resume (PDF)</a></li>
+                </ul>
+            </div>
+
+            <!-- Hobby site teaser -->
+            <div class="hobby-box">
+                <div>🎮 Hobby Site</div>
+                <a href="hobby/">Enter →</a>
+                <div style="font-size:10px;color:#999;margin-top:4px;">
+                    Gallery · Guestbook · More
+                </div>
+            </div>
+
+            <div style="text-align:center;margin-top:var(--spacing-lg);">
+                <a href="#" class="btn-retro">▲ TOP</a>
+            </div>
+        </aside>
 
     </div>
 
-    <script>
-    // Kiriban modal close
-    function closeKiriban() {
-        document.getElementById('kiriban-modal').style.display = 'none';
-    }
-    
-    // Simple clap button (stores in localStorage for demo)
-    function sendClap() {
-        let today = new Date().toDateString();
-        let claps = JSON.parse(localStorage.getItem('siteClaps') || '{}');
-        claps[today] = (claps[today] || 0) + 1;
-        localStorage.setItem('siteClaps', JSON.stringify(claps));
-        document.getElementById('clap-today').textContent = claps[today];
-        
-        // Visual feedback
-        let btn = document.querySelector('.btn-clap');
-        btn.classList.add('clapped');
-        setTimeout(() => btn.classList.remove('clapped'), 300);
-    }
-    
-    // Load today's claps on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        let today = new Date().toDateString();
-        let claps = JSON.parse(localStorage.getItem('siteClaps') || '{}');
-        document.getElementById('clap-today').textContent = claps[today] || 0;
-    });
-    </script>
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-deco">✦ ═══════════════════════════════ ✦</div>
+        <p>&copy; <?= date('Y') ?> Ryu Gray · Virginia Tech · Ut Prosim</p>
+        <p style="font-size:10px;">
+            <a href="hobby/">Hobby Site</a>
+            <span class="info-divider">|</span>
+            <a href="about.php">About</a>
+            <span class="info-divider">|</span>
+            <a href="https://github.com/HarukoCinder" target="_blank" rel="noopener">GitHub</a>
+        </p>
+        <div class="footer-deco">✦ ═══════════════════════════════ ✦</div>
+    </footer>
+
+</div>
+
 </body>
 </html>
