@@ -80,10 +80,28 @@ require __DIR__ . '/includes/head.php';
             <!-- Contact quick links -->
             <div class="mini-links">
                 <div class="links-title">- CONTACT -</div>
+
+            <!-- Language switch -->
+            <div class="mini-links">
+                <div class="links-title">- LANGUAGE -</div>
+                <ul>
+                    <li><a href="/">English ←</a></li>
+                    <li><a href="/ja/">日本語</a></li>
+                </ul>
+            </div>
                 <ul>
                     <li><a href="mailto:ryug@vt.edu">ryug@vt.edu</a></li>
                     <li><a href="https://github.com/HarukoCinder" target="_blank" rel="noopener">GitHub</a></li>
                     <li><a href="https://www.linkedin.com/in/ryugray" target="_blank" rel="noopener">LinkedIn</a></li>
+                </ul>
+            </div>
+
+            <!-- Language switch -->
+            <div class="mini-links">
+                <div class="links-title">- LANGUAGE -</div>
+                <ul>
+                    <li><a href="/">English ←</a></li>
+                    <li><a href="/ja/">日本語</a></li>
                 </ul>
             </div>
         </aside>

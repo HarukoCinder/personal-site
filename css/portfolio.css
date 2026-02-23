@@ -38,10 +38,10 @@
     --counter-digit: #E5751F;
     --counter-glow: #ff9040;
 
-    /* Fonts — same retro fonts */
-    --font-main: "ＭＳ Ｐゴシック", "MS PGothic", "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
-    --font-title: "ＭＳ 明朝", "MS Mincho", "Hiragino Mincho Pro", serif;
-    --font-pixel: "ＭＳ ゴシック", "MS Gothic", monospace;
+    /* Fonts — Easy to read font */
+    --font-main: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+    --font-title: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-pixel: "SF Mono", "Fira Code", "Noto Sans JP", monospace;
 
     /* Spacing */
     --spacing-xs: 4px;
@@ -64,7 +64,7 @@ body {
     margin: 0;
     padding: var(--spacing-md);
     font-family: var(--font-main);
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.7;
     color: var(--text-main);
     background-color: var(--bg-main);
