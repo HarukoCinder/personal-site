@@ -4,7 +4,7 @@
  * ギャラリー / Photo Gallery
  * ========================================
  */
-require_once __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/../includes/config.php';
 
 $db = getDB();
 
@@ -50,10 +50,10 @@ $page_title = 'ギャラリー - ' . SITE_TITLE;
 $page_description = OWNER_NAME . 'の写真ギャラリー';
 $page_lang = 'ja';
 $page_path = '/gallery';
-require __DIR__ . '/includes/head.php';
+require __DIR__ . '/../includes/head.php';
 ?>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/gallery.css">
 </head>
 <body>
     <div class="site-container">

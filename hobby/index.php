@@ -4,7 +4,7 @@
  * メインページ / Main Page
  * ========================================
  */
-require_once __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/../includes/config.php';
 
 // Get and increment visitor counter
 $visitor_count = getAndIncrementCounter();
@@ -35,9 +35,9 @@ $page_title = $site_title;
 $page_description = h(OWNER_NAME) . 'の個人サイト - 写真ギャラリーとポートフォリオ';
 $page_lang = 'ja';
 $page_path = '/';
-require __DIR__ . '/includes/head.php';
+require __DIR__ . '/../includes/head.php';
 ?>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <!-- ★ キリ番おめでとう！ Kiriban Celebration ★ -->
@@ -232,7 +232,7 @@ require __DIR__ . '/includes/head.php';
                 <div class="profile-mini">
                     <div class="profile-title">- PROFILE -</div>
                     <div class="profile-icon">
-                        <img src="images/avatar.webp" alt="Avatar" onerror="this.src='images/default_avatar.png'">
+                        <img src="/images/avatar.webp" alt="Avatar" onerror="this.src='images/default_avatar.png'">
                     </div>
                     <div class="profile-name"><?= h(OWNER_NAME) ?></div>
                     <div class="profile-bio">
@@ -263,7 +263,7 @@ require __DIR__ . '/includes/head.php';
                 <!-- バナー -->
                 <div class="site-banner">
                     <div class="banner-title">- BANNER -</div>
-                    <img src="images/banner.gif" alt="Site Banner" class="banner-img" 
+                    <img src="/images/banner.gif" alt="Site Banner" class="banner-img" 
                          onerror="this.style.display='none'">
                     <div class="banner-info">
                         <small>リンクフリーです<br>200×40px</small>

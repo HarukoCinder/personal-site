@@ -4,7 +4,7 @@
  * 掲示板 / Guestbook (BBS)
  * ========================================
  */
-require_once __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/../includes/config.php';
 
 $db = getDB();
 $error = '';
@@ -105,10 +105,10 @@ $page_title = '掲示板 - ' . SITE_TITLE;
 $page_description = OWNER_NAME . 'の掲示板・ゲストブック';
 $page_lang = 'ja';
 $page_path = '/guestbook';
-require __DIR__ . '/includes/head.php';
+require __DIR__ . '/../includes/head.php';
 ?>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/guestbook.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/guestbook.css">
 </head>
 <body>
     <div class="site-container">

@@ -1,0 +1,15 @@
+[23-Feb-2026 04:44:34 UTC] PHP Warning:  require_once(/home/grayvtdo/public_html/hobby/includes/config.php): Failed to open stream: No such file or directory in /home/grayvtdo/public_html/hobby/index.php on line 7
+[23-Feb-2026 04:44:34 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/grayvtdo/public_html/hobby/includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/grayvtdo/public_html/hobby/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/grayvtdo/public_html/hobby/index.php on line 7
+[23-Feb-2026 04:44:42 UTC] PHP Warning:  require_once(/home/grayvtdo/public_html/hobby/includes/config.php): Failed to open stream: No such file or directory in /home/grayvtdo/public_html/hobby/index.php on line 7
+[23-Feb-2026 04:44:42 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/grayvtdo/public_html/hobby/includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/grayvtdo/public_html/hobby/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/grayvtdo/public_html/hobby/index.php on line 7
+[23-Feb-2026 04:44:45 UTC] PHP Warning:  require_once(/home/grayvtdo/public_html/hobby/includes/config.php): Failed to open stream: No such file or directory in /home/grayvtdo/public_html/hobby/index.php on line 7
+[23-Feb-2026 04:44:45 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/grayvtdo/public_html/hobby/includes/config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/grayvtdo/public_html/hobby/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/grayvtdo/public_html/hobby/index.php on line 7
